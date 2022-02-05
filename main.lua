@@ -46,9 +46,6 @@ function love.load()
     -- Prevents blurring of graphics
     love.graphics.setDefaultFilter('nearest', 'nearest')
 
-    file = io.open('save.txt', 'r')
-    io.input(file)
-
     -- Initialize fonts to be used
     bigFont = love.graphics.newFont('font.ttf', 24)
     medFont = love.graphics.newFont('font.ttf', 16)
@@ -99,7 +96,7 @@ function love.load()
 
     gameState = 'menu'
     score = 0
-    highscore = io.read()
+    highscore = love.filesystem.getInfo('savedata.txt') and love.filesystem.read('savedata.txt') or 0
 
     menuScreens = {
         ['mainMenu'] = function()
@@ -129,8 +126,6 @@ function love.load()
 
     menuState = 'mainMenu'
 
-    io.close(file)
-
     -- Declare map object
     map = Map()
 
@@ -152,10 +147,7 @@ end
 -- Called everytime a key was pressed
 function love.keypressed(key)
     if key == 'escape' and gameState ~= 'play' then
-        local file = io.open('save.txt', 'w')
-        io.output(file)
-        io.write(highscore)
-        io.close(file)
+        love.filesystem.write('savedata.txt', highscore)
         love.event.quit()
     elseif key == 'escape' and gameState == 'play' then
         bgMusic:stop()
