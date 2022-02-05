@@ -260,6 +260,7 @@ end
 function Player:gameOver()
     gameState = 'gameOver'
     highscore = math.max(score, highscore)
+    love.filesystem.write('savedata.txt', highscore)
 
     bgMusic:stop()
     gameOverSound:play()

@@ -147,7 +147,6 @@ end
 -- Called everytime a key was pressed
 function love.keypressed(key)
     if key == 'escape' and gameState ~= 'play' then
-        love.filesystem.write('savedata.txt', highscore)
         love.event.quit()
     elseif key == 'escape' and gameState == 'play' then
         bgMusic:stop()
