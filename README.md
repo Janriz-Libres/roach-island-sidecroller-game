@@ -18,7 +18,7 @@ There are two ways to kill your enemies: One is to shoot them. Second is to jump
 The roaches will spawn at random locations at any given time, even when you have just first spawned and started the game, so always be alert!
 
 ## Prerequisites
-Requirements for the software and other tools to run the game
+Requirements for the game and other tools to run
 - [![Love2D][Love2D]][Love2D-url]
 
 ## Built WIth
